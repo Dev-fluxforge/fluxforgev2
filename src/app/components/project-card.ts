@@ -11,13 +11,13 @@ import {Project} from '../services/project';
     'class': 'flex flex-col h-full'
   },
   template: `
-    <div class="group flex flex-col h-full bg-surface border border-border-forest rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_16px_48px_rgba(0,168,107,0.12)]">
+    <div class="group flex flex-col h-full bg-surface border border-border-forest rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.01] hover:border-primary/50 hover:shadow-[0_20px_50px_rgba(0,168,107,0.15)]">
       <!-- Thumbnail -->
       <div 
         class="h-44 relative flex-shrink-0 flex items-center justify-center overflow-hidden"
         [ngClass]="getGradient(project.category)"
       >
-        <div class="font-display text-5xl font-bold text-white/20 select-none group-hover:scale-110 group-hover:text-white/40 transition-all duration-700">
+        <div class="font-display text-5xl font-bold text-white/10 select-none group-hover:scale-110 group-hover:text-white/30 transition-all duration-700">
           {{ project.id }}
         </div>
         
@@ -42,12 +42,15 @@ import {Project} from '../services/project';
           <h3 class="text-xl font-display font-bold text-white group-hover:text-accent transition-colors min-h-[56px] line-clamp-2">
             {{ project.title }}
           </h3>
-          <p 
-            class="text-sage text-sm leading-relaxed transition-all duration-300"
-            [class.line-clamp-3]="!isExpanded()"
-          >
-            {{ project.description }}
-          </p>
+          <div class="relative overflow-hidden transition-all duration-500 ease-in-out" 
+               [style.max-height]="isExpanded() ? '1000px' : '72px'">
+            <p 
+              class="text-sage text-sm leading-relaxed"
+              [class.line-clamp-3]="!isExpanded()"
+            >
+              {{ project.description }}
+            </p>
+          </div>
 
           <button 
             (click)="isExpanded.set(!isExpanded())"
@@ -76,14 +79,20 @@ import {Project} from '../services/project';
         </div>
 
         <!-- Actions -->
-        <div class="flex gap-4 pt-4 mt-auto">
+        <div class="flex gap-3 pt-4 mt-auto">
           <a 
             [href]="project.github" 
             target="_blank" 
             class="flex-1 bg-primary hover:bg-accent text-void py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn"
           >
-            <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">code</mat-icon>
-            <span class="leading-none">GitHub</span>
+            <div class="w-4 h-4 flex items-center justify-center">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+                class="w-full h-full brightness-0 group-hover/btn:scale-110 transition-transform"
+                alt="GitHub"
+              >
+            </div>
+            <span class="leading-none mt-[1px]">GitHub</span>
           </a>
           @if (project.demo) {
             <a 
@@ -91,13 +100,13 @@ import {Project} from '../services/project';
               target="_blank" 
               class="flex-1 border border-border-forest hover:border-primary hover:text-primary text-sage py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn"
             >
-              <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">visibility</mat-icon>
-              <span class="leading-none">Live Demo</span>
+              <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center group-hover/btn:scale-110 transition-transform">visibility</mat-icon>
+              <span class="leading-none mt-[1px]">Live Demo</span>
             </a>
           } @else {
             <div class="flex-1 border border-border-forest/30 text-sage/30 py-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-2 cursor-not-allowed">
               <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">visibility_off</mat-icon>
-              <span class="leading-none">No Demo</span>
+              <span class="leading-none mt-[1px]">No Demo</span>
             </div>
           }
         </div>

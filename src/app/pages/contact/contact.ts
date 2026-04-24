@@ -175,11 +175,16 @@ export class Contact {
     if (this.contactForm.valid) {
       this.isSubmitting.set(true);
       
-      // Simulate API call
+      const { name, email, subject, message } = this.contactForm.value;
+      const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      const mailtoLink = `mailto:badmusa891@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent(emailBody)}`;
+
+      // Simulate preparation and then redirect
       setTimeout(() => {
+        window.location.href = mailtoLink;
         this.isSubmitting.set(false);
         this.submitted.set(true);
-      }, 1500);
+      }, 800);
     }
   }
 }

@@ -40,11 +40,7 @@ import {ProjectCard} from '../../components/project-card';
             <a routerLink="/projects" class="w-full sm:w-auto bg-primary text-void px-10 py-5 rounded-lg font-bold text-lg transition-all hover:scale-105 hover:bg-accent glow-primary">
               View Our Work
             </a>
-            <a href="/resume.pdf" download class="w-full sm:w-auto border-1.5 border-primary text-primary px-10 py-5 rounded-lg font-bold text-lg transition-all hover:bg-primary/10 flex items-center justify-center gap-2">
-              <mat-icon>download</mat-icon>
-              Download Resume
-            </a>
-            <a routerLink="/contact" class="w-full sm:w-auto text-sage hover:text-primary transition-colors font-bold flex items-center justify-center">
+            <a routerLink="/contact" class="w-full sm:w-auto border-1.5 border-primary text-primary px-10 py-5 rounded-lg font-bold text-lg transition-all hover:bg-primary/10">
               Get in Touch
             </a>
           </div>

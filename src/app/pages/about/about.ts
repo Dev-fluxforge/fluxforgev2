@@ -89,9 +89,9 @@ import {SectionHeader} from '../../components/section-header';
               </div>
 
               <div class="space-y-4 pt-4">
-                <a href="/resume.pdf" download class="block w-full text-center border-1.5 border-primary text-primary py-3 rounded-xl text-sm font-bold hover:bg-primary hover:text-void transition-all flex items-center justify-center gap-2">
-                  <mat-icon>download</mat-icon>
-                  Download CV
+                <a routerLink="/resume" class="block w-full text-center border-1.5 border-primary text-primary py-3 rounded-xl text-sm font-bold hover:bg-primary hover:text-void transition-all flex items-center justify-center gap-2">
+                  <mat-icon>description</mat-icon>
+                  View / Print Resume
                 </a>
                 <a href="mailto:badmusa891@gmail.com" class="block w-full text-center border-2 border-primary text-primary py-4 rounded-xl font-bold hover:bg-primary hover:text-void transition-all">
                   Contact Founder

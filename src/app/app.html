@@ -1,7 +1,11 @@
 <div class="flex flex-col min-h-screen">
-  <app-navbar></app-navbar>
-  <main class="flex-grow pt-16">
+  @if (!isResumeRoute()) {
+    <app-navbar></app-navbar>
+  }
+  <main class="flex-grow" [class.pt-16]="!isResumeRoute()">
     <router-outlet />
   </main>
-  <app-footer></app-footer>
+  @if (!isResumeRoute()) {
+    <app-footer></app-footer>
+  }
 </div>

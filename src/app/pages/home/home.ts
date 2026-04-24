@@ -34,11 +34,11 @@ import {ProjectCard} from '../../components/project-card';
                 <span class="font-mono text-[10px] uppercase tracking-widest font-bold">Systems Architected for 2026</span>
               </div>
               
-              <h1 class="text-6xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.85] tracking-tighter">
+              <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-display font-bold text-white leading-[0.85] tracking-tighter">
                 Forging<br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">Digital</span><br/>
-                <span class="relative inline-block w-full h-[1.1em] overflow-hidden">
-                  <span class="absolute inset-0 text-white animate-text-slide">
+                <span class="relative inline-block min-h-[1.1em] overflow-hidden w-full">
+                  <span class="absolute inset-0 text-white animate-text-slide whitespace-nowrap">
                     {{ rotatingText() }}
                   </span>
                 </span>
@@ -196,12 +196,10 @@ import {ProjectCard} from '../../components/project-card';
   `,
   styles: [`
     @keyframes text-slide {
-      0%, 15% { transform: translateY(0); opacity: 1; }
-      20%, 35% { transform: translateY(-1.1em); opacity: 0; }
-      36% { transform: translateY(1.1em); opacity: 0; }
-      40%, 55% { transform: translateY(0); opacity: 1; }
-      60%, 75% { transform: translateY(0); opacity: 1; }
-      80%, 100% { transform: translateY(0); opacity: 1; }
+      0% { transform: translateY(60%); opacity: 0; }
+      12% { transform: translateY(0); opacity: 1; }
+      88% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-60%); opacity: 0; }
     }
 
     @keyframes scroll-hint {
@@ -221,7 +219,7 @@ import {ProjectCard} from '../../components/project-card';
     }
 
     .animate-text-slide {
-      animation: text-slide 4s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+      animation: text-slide 4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     }
 
     .animate-gradient {
@@ -268,7 +266,7 @@ export class Home implements OnDestroy {
     this.intervalId = setInterval(() => {
       this.index = (this.index + 1) % this.phrases.length;
       this.rotatingText.set(this.phrases[this.index]);
-    }, 3000);
+    }, 4000);
   }
 
   ngOnDestroy() {

@@ -95,16 +95,16 @@ import {SectionHeader} from '../../components/section-header';
                   target="_blank"
                   class="block w-full text-center bg-gradient-to-r from-primary to-accent text-void py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,168,107,0.4)] hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
                 >
-                  <mat-icon>download</mat-icon>
-                  Download Resume (PDF)
+                  <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">download</mat-icon>
+                  <span class="leading-none">Download Resume (PDF)</span>
                 </a>
                 <a 
                   href="https://docs.google.com/document/d/1MavfX3SyVgdmQwTbfl8TtL4GnCLGZDkJTYOVOK7a_uo/edit?usp=drive_link" 
                   target="_blank"
                   class="block w-full text-center border border-border-forest text-sage py-3 rounded-xl text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2"
                 >
-                  <mat-icon>open_in_new</mat-icon>
-                  View Live CV (Google Docs)
+                  <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">open_in_new</mat-icon>
+                  <span class="leading-none">View Live CV (Google Docs)</span>
                 </a>
                 <a href="mailto:badmusa891@gmail.com" class="block w-full text-center border border-primary/30 text-primary py-3 rounded-xl text-sm font-bold hover:bg-primary/5 transition-all">
                   Contact Founder

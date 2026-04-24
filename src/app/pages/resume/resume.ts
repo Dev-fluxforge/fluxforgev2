@@ -11,16 +11,16 @@ import {MatIconModule} from '@angular/material/icon';
       <!-- Actions (Hidden on Print) -->
       <div class="max-w-4xl mx-auto mb-8 flex justify-between items-center print:hidden">
         <button (click)="goBack()" class="text-slate-500 hover:text-slate-900 flex items-center gap-2">
-          <mat-icon>arrow_back</mat-icon>
-          Back to Portfolio
+          <mat-icon class="!text-base flex items-center justify-center !w-4 !h-4">arrow_back</mat-icon>
+          <span class="leading-none">Back to Portfolio</span>
         </button>
         <a 
           href="https://docs.google.com/document/d/1MavfX3SyVgdmQwTbfl8TtL4GnCLGZDkJTYOVOK7a_uo/export?format=pdf" 
           target="_blank"
           class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-indigo-700 transition-colors"
         >
-          <mat-icon>download</mat-icon>
-          Download Live PDF
+          <mat-icon class="!text-base flex items-center justify-center !w-4 !h-4">download</mat-icon>
+          <span class="leading-none">Download Live PDF</span>
         </a>
       </div>
 
@@ -31,10 +31,10 @@ import {MatIconModule} from '@angular/material/icon';
           <h1 class="text-4xl font-display font-black tracking-tight text-slate-900 mb-2 uppercase">Muhammad Adeniyi Badmus</h1>
           <p class="text-lg text-indigo-600 font-bold mb-4 uppercase tracking-widest">Aspiring Software Engineer | Front-End Development Specialist</p>
           <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500 font-medium">
-            <span class="flex items-center gap-1"><mat-icon class="!text-[16px]">location_on</mat-icon> Saki, Oyo, Nigeria</span>
-            <span class="flex items-center gap-1"><mat-icon class="!text-[16px]">phone</mat-icon> +2348137496961</span>
-            <span class="flex items-center gap-1"><mat-icon class="!text-[16px]">email</mat-icon> badmusa891&#64;gmail.com</span>
-            <span class="flex items-center gap-1"><mat-icon class="!text-[16px]">link</mat-icon> linkedin.com/in/muhammad-adeniyi-badmus-125692288</span>
+            <span class="flex items-center gap-1"><mat-icon class="!text-sm flex items-center justify-center !w-4 !h-4">location_on</mat-icon> <span class="leading-none">Saki, Oyo, Nigeria</span></span>
+            <span class="flex items-center gap-1"><mat-icon class="!text-sm flex items-center justify-center !w-4 !h-4">phone</mat-icon> <span class="leading-none">+2348137496961</span></span>
+            <span class="flex items-center gap-1"><mat-icon class="!text-sm flex items-center justify-center !w-4 !h-4">email</mat-icon> <span class="leading-none">badmusa891&#64;gmail.com</span></span>
+            <span class="flex items-center gap-1"><mat-icon class="!text-sm flex items-center justify-center !w-4 !h-4">link</mat-icon> <span class="leading-none">linkedin.com/in/muhammad-adeniyi-badmus-125692288</span></span>
           </div>
         </header>
 

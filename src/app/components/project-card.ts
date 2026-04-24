@@ -28,14 +28,14 @@ import {Project} from '../services/project';
         >
           {{ project.category }}
         </span>
-+
+
         @if (project.status === 'In Progress') {
           <span class="absolute top-4 right-4 bg-void/80 backdrop-blur-md text-sage px-3 py-1 rounded-full text-[10px] font-bold border border-border-forest">
             In Progress
           </span>
         }
       </div>
-+
+
       <!-- Content -->
       <div class="p-6 flex flex-col flex-grow space-y-4">
         <div class="space-y-4 flex-grow">
@@ -45,17 +45,25 @@ import {Project} from '../services/project';
           <p class="text-sage text-sm leading-relaxed line-clamp-3">
             {{ project.description }}
           </p>
-+
+
           <!-- Tech Tags -->
-          <div class="flex flex-wrap gap-2 pt-2">
+          <div class="flex flex-wrap gap-3 pt-2">
             @for (t of project.tech; track t) {
-              <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-border-forest text-sage bg-void/50 uppercase tracking-tighter">
-                {{ t }}
-              </span>
+              <div class="group/tech relative flex items-center justify-center w-8 h-8 rounded-lg bg-void/30 border border-border-forest/50 hover:border-primary/50 transition-all duration-300" [title]="t">
+                <img 
+                  [src]="getTechIcon(t)" 
+                  [alt]="t"
+                  class="w-5 h-5 brightness-90 group-hover/tech:brightness-110 group-hover/tech:scale-110 transition-all"
+                  onerror="this.style.display='none'"
+                >
+                <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-void/90 text-white text-[9px] font-mono rounded opacity-0 group-hover/tech:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-primary/20 z-20">
+                  {{ t }}
+                </span>
+              </div>
             }
           </div>
         </div>
-+
+
         <!-- Actions -->
         <div class="flex gap-4 pt-4 mt-auto">
           <a 
@@ -113,5 +121,31 @@ export class ProjectCard {
       'Personal': 'bg-[#1a0a2a] text-[#C084FC]'
     };
     return maps[category] || 'bg-sage text-white';
+  }
+
+  getTechIcon(tech: string): string {
+    const baseUrl = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
+    const maps: Record<string, string> = {
+      'Angular': 'angularjs/angularjs-original.svg',
+      'TypeScript': 'typescript/typescript-original.svg',
+      'Tailwind CSS': 'tailwindcss/tailwindcss-original.svg',
+      'Tailwind': 'tailwindcss/tailwindcss-original.svg',
+      'Vercel': 'vercel/vercel-original.svg',
+      'HTML5': 'html5/html5-original.svg',
+      'HTML': 'html5/html5-original.svg',
+      'CSS3': 'css3/css3-original.svg',
+      'JavaScript': 'javascript/javascript-original.svg',
+      'JS': 'javascript/javascript-original.svg',
+      'Git': 'git/git-original.svg',
+      'GitHub': 'github/github-original.svg',
+      'PHP': 'php/php-original.svg',
+      'Node.js': 'nodejs/nodejs-original.svg',
+      'Firebase': 'firebase/firebase-plain.svg'
+    };
+    
+    // Normalize string to match keys
+    const normalized = tech.trim();
+    const iconPath = maps[normalized] || 'javascript/javascript-original.svg';
+    return `${baseUrl}${iconPath}`;
   }
 }

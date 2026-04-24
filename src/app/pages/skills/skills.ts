@@ -27,9 +27,14 @@ import {SectionHeader} from '../../components/section-header';
 
             <div class="space-y-8">
               @for (skill of group.skills; track skill.name) {
-                <div class="space-y-3">
+                <div class="group/skill space-y-3">
                   <div class="flex justify-between items-end">
-                    <span class="text-pale-mint text-sm font-medium">{{ skill.name }}</span>
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-surface-lighter flex items-center justify-center border border-border-forest group-hover/skill:border-primary/30 transition-colors">
+                        <mat-icon class="!text-[18px] text-sage group-hover/skill:text-primary transition-colors">{{ skill.icon }}</mat-icon>
+                      </div>
+                      <span class="text-pale-mint text-sm font-medium">{{ skill.name }}</span>
+                    </div>
                     <span class="font-mono text-xs text-sage">{{ skill.percent }}%</span>
                   </div>
                   <!-- Progress Bar -->
@@ -91,33 +96,33 @@ export class Skills {
       label: 'GROUP 1',
       title: 'Core Languages',
       skills: [
-        { name: 'HTML5 / CSS3', percent: 97 },
-        { name: 'JavaScript', percent: 88 },
-        { name: 'TypeScript', percent: 80 },
-        { name: 'PHP', percent: 55 },
-        { name: 'MySQL / Oracle', percent: 50 },
+        { name: 'HTML5 / CSS3', percent: 97, icon: 'code' },
+        { name: 'JavaScript', percent: 88, icon: 'javascript' },
+        { name: 'TypeScript', percent: 80, icon: 'terminal' },
+        { name: 'PHP', percent: 55, icon: 'settings_ethernet' },
+        { name: 'MySQL / Oracle', percent: 50, icon: 'storage' },
       ]
     },
     {
       label: 'GROUP 2',
       title: 'Frameworks & Tools',
       skills: [
-        { name: 'Angular', percent: 85 },
-        { name: 'Tailwind CSS', percent: 90 },
-        { name: 'Bootstrap', percent: 78 },
-        { name: 'Git / GitHub', percent: 82 },
-        { name: 'Vercel', percent: 88 },
+        { name: 'Angular', percent: 85, icon: 'grid_view' },
+        { name: 'Tailwind CSS', percent: 90, icon: 'palette' },
+        { name: 'Bootstrap', percent: 78, icon: 'layers' },
+        { name: 'Git / GitHub', percent: 82, icon: 'hub' },
+        { name: 'Vercel', percent: 88, icon: 'rocket_launch' },
       ]
     },
     {
       label: 'GROUP 3',
       title: 'Design Tools',
       skills: [
-        { name: 'Adobe Photoshop', percent: 92 },
-        { name: 'CorelDRAW', percent: 90 },
-        { name: 'Canva', percent: 95 },
-        { name: 'Figma', percent: 65 },
-        { name: 'PixelLab', percent: 80 },
+        { name: 'Adobe Photoshop', percent: 92, icon: 'photo_filter' },
+        { name: 'CorelDRAW', percent: 90, icon: 'brush' },
+        { name: 'Canva', percent: 95, icon: 'edit_square' },
+        { name: 'Figma', percent: 65, icon: 'auto_awesome_motion' },
+        { name: 'PixelLab', percent: 80, icon: 'photo' },
       ]
     }
   ];

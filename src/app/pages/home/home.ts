@@ -37,8 +37,8 @@ import {ProjectCard} from '../../components/project-card';
               <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-display font-bold text-white leading-[0.85] tracking-tighter">
                 Forging<br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">Digital</span><br/>
-                <span class="relative inline-block min-h-[1.1em] overflow-hidden w-full">
-                  <span class="absolute inset-0 text-white animate-text-slide whitespace-nowrap">
+                <span class="relative inline-flex items-center min-h-[1.2em] overflow-hidden w-full lg:w-auto">
+                  <span class="absolute left-0 right-0 lg:static text-white animate-text-slide whitespace-nowrap">
                     {{ rotatingText() }}
                   </span>
                 </span>
@@ -122,10 +122,50 @@ import {ProjectCard} from '../../components/project-card';
             @for (stat of stats; track stat.label; let i = $index) {
               <div class="relative lg:px-12 text-center lg:text-left group">
                 <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">{{ stat.value }}</div>
-                <div class="text-[11px] font-mono text-primary uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity">{{ stat.label }}</div>
+                <div class="text-[11px] font-mono text-primary uppercase tracking-0.2em opacity-60 group-hover:opacity-100 transition-opacity">{{ stat.label }}</div>
                 @if (i < 3) {
                   <div class="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
                 }
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="py-32 bg-void relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <app-section-header 
+            label="TESTIMONIALS" 
+            title="What our clients say" 
+            description="We build lasting partnerships with visionaries who demand the best."
+          ></app-section-header>
+
+          <div class="grid md:grid-cols-3 gap-8 mt-20">
+            @for (testimonial of testimonials; track testimonial.name) {
+              <div class="group p-8 bg-surface/50 border border-border-forest rounded-2xl hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 flex flex-col relative overflow-hidden">
+                <!-- Quote Icon Decor -->
+                <mat-icon class="absolute -top-4 -right-4 !text-8xl text-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">format_quote</mat-icon>
+                
+                <div class="flex gap-1 mb-6">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <mat-icon class="!text-sm text-accent">star</mat-icon>
+                  }
+                </div>
+
+                <p class="text-sage text-lg leading-relaxed flex-grow italic mb-8">
+                  "{{ testimonial.text }}"
+                </p>
+
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-void">
+                    {{ testimonial.name[0] }}
+                  </div>
+                  <div>
+                    <div class="text-white font-bold">{{ testimonial.name }}</div>
+                    <div class="text-primary text-xs font-mono uppercase tracking-widest">{{ testimonial.role }}</div>
+                  </div>
+                </div>
               </div>
             }
           </div>
@@ -254,6 +294,24 @@ export class Home implements OnDestroy {
   ];
 
   featuredProjects: Project[] = [];
+
+  testimonials = [
+    {
+      name: 'Sarah Chen',
+      role: 'Founder at Nexus AI',
+      text: 'FluxForge delivered a front-end that was not only pixel-perfect but performed significantly better than our previous architecture.'
+    },
+    {
+      name: 'James Wilson',
+      role: 'CTO, Global Logic',
+      text: 'Their attention to detail in motion design and accessibility set them apart. They are our go-to partner for surgical UI implementations.'
+    },
+    {
+      name: 'Elena Rodriguez',
+      role: 'Product Lead, FinTech Pro',
+      text: 'Working with FluxForge was seamless. They understood our complex requirements and turned them into a high-performance reality.'
+    }
+  ];
 
   scrollToStats() {
     document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' });

@@ -9,9 +9,9 @@ import {MatIconModule} from '@angular/material/icon';
   template: `
     <footer class="bg-surface border-t border-primary/20 pt-16 pb-8">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 mb-16">
           <!-- Brand -->
-          <div class="space-y-6 sm:col-span-2 lg:col-span-1">
+          <div class="space-y-6 col-span-2 lg:col-span-1">
             <a routerLink="/" class="flex items-center gap-1 group">
               <span class="font-display text-2xl font-bold text-white tracking-tight">Flux</span>
               <span class="font-display text-2xl font-bold text-primary tracking-tight">Forge</span>
@@ -55,7 +55,7 @@ import {MatIconModule} from '@angular/material/icon';
           </div>
 
           <!-- Contact -->
-          <div class="space-y-6">
+          <div class="space-y-6 col-span-2 lg:col-span-1">
             <h4 class="text-white font-display font-bold text-lg">Get in Touch</h4>
             <ul class="space-y-4 text-sage text-sm">
               <li class="flex items-start gap-3">

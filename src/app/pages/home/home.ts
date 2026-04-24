@@ -34,11 +34,11 @@ import {ProjectCard} from '../../components/project-card';
                 <span class="font-mono text-[10px] uppercase tracking-widest font-bold">Systems Architected for 2026</span>
               </div>
               
-              <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-display font-bold text-white leading-[0.85] tracking-tighter">
+              <h1 class="text-4xl sm:text-7xl md:text-8xl lg:text-[100px] font-display font-bold text-white leading-none sm:leading-[0.85] tracking-tighter">
                 Forging<br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">Digital</span><br/>
-                <span class="relative inline-flex items-center min-h-[1.2em] overflow-hidden w-full lg:w-auto">
-                  <span class="absolute left-0 right-0 lg:static text-white animate-text-slide whitespace-nowrap">
+                <span class="relative inline-flex items-center min-h-[3em] sm:min-h-[1.2em] overflow-hidden w-full">
+                  <span class="relative text-white animate-text-slide whitespace-normal block w-full">
                     {{ rotatingText() }}
                   </span>
                 </span>
@@ -297,19 +297,19 @@ export class Home implements OnDestroy {
 
   testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'Founder at Nexus AI',
-      text: 'FluxForge delivered a front-end that was not only pixel-perfect but performed significantly better than our previous architecture.'
+      name: 'Adewale Alaran',
+      role: 'CEO, Alaran Geo-Services',
+      text: 'The web platform FluxForge built for our geological services has transformed how we present our technical data to clients. The precision and performance are unmatched.'
     },
     {
-      name: 'James Wilson',
-      role: 'CTO, Global Logic',
-      text: 'Their attention to detail in motion design and accessibility set them apart. They are our go-to partner for surgical UI implementations.'
+      name: 'Boluwatife Williams',
+      role: 'Creative Director, Luxury Photography',
+      text: 'Our Photography & Videography MVP needed to be visually stunning without sacrificing speed. FluxForge delivered a breathtaking experience that our clients love.'
     },
     {
-      name: 'Elena Rodriguez',
-      role: 'Product Lead, FinTech Pro',
-      text: 'Working with FluxForge was seamless. They understood our complex requirements and turned them into a high-performance reality.'
+      name: 'Dr. Ibrahim Yusuf',
+      role: 'Project Supervisor, Dervac',
+      text: 'The SIWES Project Dashboard has streamlined our student tracking and reporting. It is intuitive, fast, and exactly what we needed for our digital transformation.'
     }
   ];
 

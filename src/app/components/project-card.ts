@@ -7,11 +7,14 @@ import {Project} from '../services/project';
   selector: 'app-project-card',
   imports: [CommonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    'class': 'flex flex-col h-full'
+  },
   template: `
-    <div class="group h-full bg-surface border border-border-forest rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_16px_48px_rgba(0,168,107,0.12)]">
+    <div class="group flex flex-col h-full bg-surface border border-border-forest rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_16px_48px_rgba(0,168,107,0.12)]">
       <!-- Thumbnail -->
       <div 
-        class="h-44 relative flex items-center justify-center overflow-hidden"
+        class="h-44 relative flex-shrink-0 flex items-center justify-center overflow-hidden"
         [ngClass]="getGradient(project.category)"
       >
         <div class="font-display text-5xl font-bold text-white/20 select-none group-hover:scale-110 group-hover:text-white/40 transition-all duration-700">
@@ -25,34 +28,36 @@ import {Project} from '../services/project';
         >
           {{ project.category }}
         </span>
-
++
         @if (project.status === 'In Progress') {
           <span class="absolute top-4 right-4 bg-void/80 backdrop-blur-md text-sage px-3 py-1 rounded-full text-[10px] font-bold border border-border-forest">
             In Progress
           </span>
         }
       </div>
-
++
       <!-- Content -->
-      <div class="p-6 space-y-4">
-        <h3 class="text-xl font-display font-bold text-white group-hover:text-accent transition-colors">
-          {{ project.title }}
-        </h3>
-        <p class="text-sage text-sm leading-relaxed line-clamp-3">
-          {{ project.description }}
-        </p>
-
-        <!-- Tech Tags -->
-        <div class="flex flex-wrap gap-2 pt-2">
-          @for (t of project.tech; track t) {
-            <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-border-forest text-sage bg-void/50 uppercase tracking-tighter">
-              {{ t }}
-            </span>
-          }
+      <div class="p-6 flex flex-col flex-grow space-y-4">
+        <div class="space-y-4 flex-grow">
+          <h3 class="text-xl font-display font-bold text-white group-hover:text-accent transition-colors min-h-[56px] line-clamp-2">
+            {{ project.title }}
+          </h3>
+          <p class="text-sage text-sm leading-relaxed line-clamp-3">
+            {{ project.description }}
+          </p>
++
+          <!-- Tech Tags -->
+          <div class="flex flex-wrap gap-2 pt-2">
+            @for (t of project.tech; track t) {
+              <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-border-forest text-sage bg-void/50 uppercase tracking-tighter">
+                {{ t }}
+              </span>
+            }
+          </div>
         </div>
-
++
         <!-- Actions -->
-        <div class="flex gap-4 pt-4">
+        <div class="flex gap-4 pt-4 mt-auto">
           <a 
             [href]="project.github" 
             target="_blank" 

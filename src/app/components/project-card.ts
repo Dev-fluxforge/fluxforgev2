@@ -98,15 +98,13 @@ import {Project} from '../services/project';
             <a 
               [href]="project.demo" 
               target="_blank" 
-              class="flex-1 border border-border-forest hover:border-primary hover:text-primary text-sage py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn"
+              class="flex-1 border border-border-forest hover:border-primary hover:text-primary text-sage py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center group/btn"
             >
-              <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center group-hover/btn:scale-110 transition-transform">visibility</mat-icon>
-              <span class="leading-none mt-[1px]">Live Demo</span>
+              <span class="leading-none">Live Demo</span>
             </a>
           } @else {
-            <div class="flex-1 border border-border-forest/30 text-sage/30 py-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-2 cursor-not-allowed">
-              <mat-icon class="!text-base !w-4 !h-4 flex items-center justify-center">visibility_off</mat-icon>
-              <span class="leading-none mt-[1px]">No Demo</span>
+            <div class="flex-1 border border-border-forest/30 text-sage/30 py-2.5 rounded-lg text-xs font-bold flex items-center justify-center cursor-not-allowed">
+              <span class="leading-none">No Demo</span>
             </div>
           }
         </div>

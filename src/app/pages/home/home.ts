@@ -11,50 +11,121 @@ import {ProjectCard} from '../../components/project-card';
   imports: [CommonModule, RouterModule, MatIconModule, SectionHeader, ProjectCard],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="overflow-hidden">
+    <div class="overflow-hidden bg-void">
       <!-- Hero Section -->
-      <section class="relative min-h-[calc(100vh-64px)] flex flex-col justify-center items-center px-6 py-20 text-center bg-[radial-gradient(circle_at_50%_0%,rgba(0,168,107,0.05)_0%,transparent_50%)]">
-        <!-- Dot Grid Pattern -->
-        <div class="absolute inset-0 z-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, #00A86B 1px, transparent 1px); background-size: 40px 40px;"></div>
-        
-        <div class="relative z-10 max-w-5xl mx-auto space-y-10">
-          <span class="font-mono text-xs md:text-sm tracking-[0.3em] text-accent uppercase block animate-in fade-in zoom-in duration-1000">
-            FRONT-END SOFTWARE ENGINEERING
-          </span>
-          
-          <h1 class="text-6xl md:text-8xl font-display font-bold text-white leading-[0.95] tracking-tight">
-            We build<br/>
-            <span class="text-primary inline-block min-w-[320px] sm:min-w-[480px] lg:min-w-[580px] relative h-[1.1em] overflow-hidden">
-              <span class="absolute inset-0 text-glow animate-text-slide">
-                {{ rotatingText() }}
-              </span>
-            </span>
-          </h1>
-          
-          <p class="text-pale-mint/80 text-base md:text-lg max-w-[580px] mx-auto leading-[1.7] font-medium">
-            FluxForge is a front-end engineering company crafting precision-built, 
-            user-centered web applications with Angular, TypeScript, and a designer's eye for detail.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-            <a routerLink="/projects" class="w-full sm:w-auto bg-primary text-void px-10 py-5 rounded-lg font-bold text-lg transition-all hover:scale-105 hover:bg-accent glow-primary">
-              View Our Work
-            </a>
-            <a routerLink="/contact" class="w-full sm:w-auto border-1.5 border-primary text-primary px-10 py-5 rounded-lg font-bold text-lg transition-all hover:bg-primary/10">
-              Get in Touch
-            </a>
+      <section class="relative min-h-screen flex items-center pt-20 pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <!-- Main Grid -->
+          <div class="absolute inset-0 opacity-[0.03]" 
+               style="background-image: linear-gradient(#00A86B 1px, transparent 1px), linear-gradient(90deg, #00A86B 1px, transparent 1px); background-size: 60px 60px;">
           </div>
+          <!-- Spotlight Orbs -->
+          <div class="absolute -top-[10%] left-[10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full animate-pulse"></div>
+          <div class="absolute top-[20%] right-[10%] w-[30%] h-[40%] bg-accent/5 blur-[100px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          <div class="flex flex-col lg:flex-row lg:items-center gap-16">
+            <!-- Text Content -->
+            <div class="flex-1 space-y-10">
+              <div class="inline-flex items-center gap-3 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary">
+                <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                <span class="font-mono text-[10px] uppercase tracking-widest font-bold">Systems Architected for 2026</span>
+              </div>
+              
+              <h1 class="text-6xl md:text-8xl lg:text-[110px] font-display font-bold text-white leading-[0.85] tracking-tighter">
+                Forging<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">Digital</span><br/>
+                <span class="relative inline-block w-full h-[1.1em] overflow-hidden">
+                  <span class="absolute inset-0 text-white animate-text-slide">
+                    {{ rotatingText() }}
+                  </span>
+                </span>
+              </h1>
+            
+              <p class="text-sage text-base md:text-xl max-w-xl leading-relaxed">
+                We specialize in the surgical implementation of high-performance front-end architectures. 
+                Precision-built applications for teams that refuse to compromise on quality.
+              </p>
+            
+              <div class="flex flex-wrap items-center gap-8 pt-4">
+                <a routerLink="/projects" class="group relative px-8 py-5 bg-primary text-void font-bold rounded-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+                  <span class="relative z-10 flex items-center gap-2">
+                    Explore Work
+                    <mat-icon class="!text-[20px]">arrow_forward</mat-icon>
+                  </span>
+                </a>
+                <a routerLink="/contact" class="font-mono text-sm uppercase tracking-widest text-sage hover:text-primary transition-colors flex items-center gap-4 group">
+                  <span class="w-12 h-[1px] bg-border-forest group-hover:w-16 group-hover:bg-primary transition-all"></span>
+                  Start a conversation
+                </a>
+              </div>
+            </div>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-0 pt-24 mt-24">
+            <!-- Abstract Visual Element -->
+            <div class="relative hidden lg:flex flex-shrink-0 items-center justify-center w-[450px]">
+              <div class="relative w-full aspect-square">
+                <!-- Animated Rings -->
+                <div class="absolute inset-0 border border-primary/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                <div class="absolute inset-12 border border-accent/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                <div class="absolute inset-24 border border-white/5 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                
+                <!-- Floating Card -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 p-8 bg-surface/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl hover:-translate-y-6 transition-transform duration-500 group">
+                  <div class="flex items-center justify-between mb-10">
+                    <div class="flex gap-1.5">
+                      <div class="w-3 h-3 rounded-full bg-red-500/20"></div>
+                      <div class="w-3 h-3 rounded-full bg-amber-500/20"></div>
+                      <div class="w-3 h-3 rounded-full bg-primary/20"></div>
+                    </div>
+                    <mat-icon class="text-white/20">terminal</mat-icon>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                      <div class="h-full bg-primary/40 w-3/4 animate-[shimmer_2s_infinite]"></div>
+                    </div>
+                    <div class="h-2 w-5/6 bg-white/5 rounded-full"></div>
+                    <div class="h-2 w-4/6 bg-white/5 rounded-full"></div>
+                    
+                    <div class="pt-8 flex items-center justify-between">
+                      <span class="font-mono text-[10px] text-primary/60 uppercase group-hover:text-primary transition-colors">Architecture</span>
+                      <span class="font-mono text-[10px] text-sage">1.0.42</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Corner Decoration -->
+                  <div class="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-primary/40 rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <button 
+          class="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-4 group cursor-pointer border-none bg-transparent" 
+          (click)="scrollToStats()"
+          aria-label="Scroll to statistics section"
+        >
+          <span class="text-[10px] font-mono text-sage/40 uppercase tracking-[0.4em] rotate-90 mb-4 group-hover:text-primary transition-colors">Scroll</span>
+          <div class="w-[1px] h-16 bg-gradient-to-b from-primary/50 to-transparent relative overflow-hidden">
+            <div class="absolute inset-0 bg-primary h-1/2 animate-[scroll-hint_2s_ease-in-out_infinite]"></div>
+          </div>
+        </button>
+      </section>
+
+      <!-- Stats Strip -->
+      <section id="stats" class="bg-surface border-y border-white/5 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0">
             @for (stat of stats; track stat.label; let i = $index) {
-              <div class="px-8 py-6 text-center group border-border-forest" [class.border-r]="i < 3 && i !== 1" [class.lg:border-r]="i < 3" [class.border-b]="i < 2" [class.lg:border-b-0]="true">
-                <div class="text-3xl md:text-4xl font-display font-bold text-accent mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {{ stat.value }}
-                </div>
-                <div class="text-sage text-[10px] md:text-xs font-mono uppercase tracking-[0.2em]">
-                  {{ stat.label }}
-                </div>
+              <div class="relative lg:px-12 text-center lg:text-left group">
+                <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">{{ stat.value }}</div>
+                <div class="text-[11px] font-mono text-primary uppercase tracking-[0.2em] opacity-60 group-hover:opacity-100 transition-opacity">{{ stat.label }}</div>
+                @if (i < 3) {
+                  <div class="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-white/10"></div>
+                }
               </div>
             }
           </div>
@@ -125,11 +196,36 @@ import {ProjectCard} from '../../components/project-card';
   `,
   styles: [`
     @keyframes text-slide {
-      0%, 20% { transform: translateY(0); opacity: 1; }
-      25%, 45% { transform: translateY(-1.1em); opacity: 0; }
-      50% { transform: translateY(1.1em); opacity: 0; }
-      55%, 75% { transform: translateY(0); opacity: 1; }
+      0%, 15% { transform: translateY(0); opacity: 1; }
+      20%, 35% { transform: translateY(-1.1em); opacity: 0; }
+      36% { transform: translateY(1.1em); opacity: 0; }
+      40%, 55% { transform: translateY(0); opacity: 1; }
+      60%, 75% { transform: translateY(0); opacity: 1; }
       80%, 100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes scroll-hint {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(200%); }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .animate-text-slide {
+      animation: text-slide 4s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    }
+
+    .animate-gradient {
+      animation: gradient 6s linear infinite;
     }
   `]
 })
@@ -160,6 +256,10 @@ export class Home implements OnDestroy {
   ];
 
   featuredProjects: Project[] = [];
+
+  scrollToStats() {
+    document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   constructor() {
     this.featuredProjects = this.projectService.getProjects()().filter(p => 

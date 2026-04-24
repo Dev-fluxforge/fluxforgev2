@@ -14,10 +14,14 @@ import {MatIconModule} from '@angular/material/icon';
           <mat-icon>arrow_back</mat-icon>
           Back to Portfolio
         </button>
-        <button (click)="print()" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-indigo-700 transition-colors">
-          <mat-icon>print</mat-icon>
-          Print / Save as PDF
-        </button>
+        <a 
+          href="https://docs.google.com/document/d/1MavfX3SyVgdmQwTbfl8TtL4GnCLGZDkJTYOVOK7a_uo/export?format=pdf" 
+          target="_blank"
+          class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold flex items-center gap-2 hover:bg-indigo-700 transition-colors"
+        >
+          <mat-icon>download</mat-icon>
+          Download Live PDF
+        </a>
       </div>
 
       <!-- Resume Paper -->

@@ -89,11 +89,19 @@ import {SectionHeader} from '../../components/section-header';
               </div>
 
               <div class="space-y-4 pt-4">
-                <a routerLink="/resume" class="block w-full text-center border-1.5 border-primary text-primary py-3 rounded-xl text-sm font-bold hover:bg-primary hover:text-void transition-all flex items-center justify-center gap-2">
-                  <mat-icon>description</mat-icon>
-                  View / Print Resume
+                <a 
+                  href="/assets/resume.pdf" 
+                  download="Muhammad_A_Badmus_Resume.pdf"
+                  class="block w-full text-center bg-gradient-to-r from-primary to-accent text-void py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(0,168,107,0.4)] hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                >
+                  <mat-icon>download</mat-icon>
+                  Download Resume (PDF)
                 </a>
-                <a href="mailto:badmusa891@gmail.com" class="block w-full text-center border-2 border-primary text-primary py-4 rounded-xl font-bold hover:bg-primary hover:text-void transition-all">
+                <a routerLink="/resume" class="block w-full text-center border border-border-forest text-sage py-3 rounded-xl text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                  <mat-icon>description</mat-icon>
+                  View Interactive Resume
+                </a>
+                <a href="mailto:badmusa891@gmail.com" class="block w-full text-center border border-primary/30 text-primary py-3 rounded-xl text-sm font-bold hover:bg-primary/5 transition-all">
                   Contact Founder
                 </a>
               </div>

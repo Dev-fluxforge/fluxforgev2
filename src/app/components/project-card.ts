@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {Project} from '../services/project';
@@ -42,9 +42,20 @@ import {Project} from '../services/project';
           <h3 class="text-xl font-display font-bold text-white group-hover:text-accent transition-colors min-h-[56px] line-clamp-2">
             {{ project.title }}
           </h3>
-          <p class="text-sage text-sm leading-relaxed line-clamp-3">
+          <p 
+            class="text-sage text-sm leading-relaxed transition-all duration-300"
+            [class.line-clamp-3]="!isExpanded()"
+          >
             {{ project.description }}
           </p>
+
+          <button 
+            (click)="isExpanded.set(!isExpanded())"
+            class="text-[10px] font-mono text-primary uppercase tracking-widest hover:text-accent transition-colors flex items-center gap-1 group/more"
+          >
+            {{ isExpanded() ? 'Read Less' : 'Read More' }}
+            <mat-icon class="!text-[12px] transition-transform duration-300" [class.rotate-180]="isExpanded()">expand_more</mat-icon>
+          </button>
 
           <!-- Tech Tags -->
           <div class="flex flex-wrap gap-3 pt-2">
@@ -96,6 +107,8 @@ import {Project} from '../services/project';
 })
 export class ProjectCard {
   @Input() project!: Project;
+
+  isExpanded = signal(false);
 
   getGradient(category: string) {
     const maps: Record<string, string> = {

@@ -21,7 +21,7 @@ export class ProjectService {
       title: 'FluxForge Company Website',
       category: 'Company',
       tech: ['Angular', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-      description: 'Official website for FluxForge Software Engineering Company showcasing services, team, and portfolio.',
+      description: 'Developing a high-performance, visually striking digital identity for a new software engineering startup. I implemented a zoneless Angular architecture combined with Tailwind CSS for rapid styling and optimized rendering. This created a strong brand foundation that effectively showcases technical expertise and service offerings to potential clients.',
       github: 'https://github.com/Dev-fluxforge/fluxforgev1.git',
       status: 'In Progress'
     },
@@ -30,7 +30,7 @@ export class ProjectService {
       title: 'Luxury Photography & Videography MVP',
       category: 'Client',
       tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
-      description: 'Full MVP website built for a photography/videography client with luxury editorial aesthetic.',
+      description: 'The primary challenge was balancing high-resolution asset loading with site performance to maintain a luxury, editorial aesthetic. I utilized lazy-loading techniques and optimized image formats to ensure smooth transitions and fast initial load times. This delivered a sophisticated MVP that successfully attracted high-end photography clients during initial market testing.',
       github: 'https://github.com/Dev-fluxforge/waheeda.git',
       demo: 'https://classybeauty.vercel.app/'
     },
@@ -39,7 +39,7 @@ export class ProjectService {
       title: 'Metallic Company Website',
       category: 'Business',
       tech: ['Angular', 'TypeScript', 'Tailwind CSS'],
-      description: 'Fully functioning corporate website for a metallic company.',
+      description: 'Aimed at modernizing the online presence of a traditional industrial company without compromising its established professional tone. I built a robust corporate platform with clear information architecture and interactive service modules using Angular. This significantly improved user engagement and streamlined the inquiry process for the company\'s products.',
       github: 'https://github.com/Dev-fluxforge/metallicv2.git',
       demo: 'https://metallicv2.vercel.app'
     },
@@ -48,7 +48,7 @@ export class ProjectService {
       title: 'CodSoft Calculator App',
       category: 'Internship',
       tech: ['HTML5', 'CSS3', 'JavaScript'],
-      description: 'Functional calculator with complex math operations and error handling. Built during CodSoft internship.',
+      description: 'Focused on handling complex mathematical operations and edge cases like division by zero while maintaining a clean user interface. I engineered a custom logic engine with robust error checking and a responsive design that works across all devices. This project demonstrated proficiency in core JavaScript and user-centric design during my internship.',
       github: 'https://github.com/Dev-fluxforge/codesofttask2.git',
       demo: 'https://dev-fluxforge.github.io/codesofttask2/'
     },
@@ -57,7 +57,7 @@ export class ProjectService {
       title: 'CodSoft Landing Page',
       category: 'Internship',
       tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
-      description: 'Responsive landing page with 95%+ Lighthouse performance scores. Developed during CodSoft internship.',
+      description: 'The goal was achieving exceptional performance and SEO scores for a content-rich landing page under strict development timelines. I focused on semantic HTML, efficient asset management, and critical path CSS optimization to meet performance targets. The project attained a 95%+ Lighthouse score, validating best practices in modern web development.',
       github: 'https://github.com/Dev-fluxforge/codesoft-landing.git',
       demo: 'https://dev-fluxforge.github.io/codesoft-landing/'
     },
@@ -66,7 +66,7 @@ export class ProjectService {
       title: 'Personal Developer Portfolio',
       category: 'Internship',
       tech: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
-      description: 'Personal portfolio website with modern UI/UX principles and mobile-first approach.',
+      description: 'Designed to create a unique personal brand that stands out while showcasing a diverse range of technical skills and projects. I adopted a mobile-first, dark-themed aesthetic with custom typography and subtle animations to enhance the overall narrative. It has successfully increased professional inquiries and provided a structured overview of my growth.',
       github: 'https://github.com/Dev-fluxforge/NEW-ME',
       demo: 'https://dev-fluxforge.github.io/NEW-ME/#resume'
     },
@@ -75,7 +75,7 @@ export class ProjectService {
       title: 'Alaran Geo-Services Website',
       category: 'Client',
       tech: ['HTML5', 'CSS3', 'JavaScript', 'Angular', 'Vercel'],
-      description: 'Multi-service corporate website for Alaran Geo-Services Limited with professional brand identity.',
+      description: 'This project involved integrating multiple service categories into a cohesive multi-page platform for a geo-services firm. I developed a scalable Angular architecture with a unified design system that reflects the professional identity of Alaran. It effectively expanded the company\'s digital reach and provided a reliable platform for technical services selection.',
       github: 'https://github.com/Dev-fluxforge/alaran.git',
       demo: 'https://agsl.vercel.app'
     },
@@ -84,7 +84,7 @@ export class ProjectService {
       title: 'BARHF Digital Campaign System',
       category: 'Non-Profit',
       tech: ['HTML5', 'CSS3', 'Tailwind CSS', 'Vercel'],
-      description: 'Design system for BARHF Foundation — weekly graphics reaching 5,000+ youth users weekly.',
+      description: 'Creating a system to reach a large, diverse youth audience weekly with high-impact digital graphics and campaign updates. I built a streamlined campaign system using Tailwind CSS for rapid prototyping and consistent branding across all digital touchpoints. This empowered the BARHF Foundation to reach over 5,000 active users weekly for awareness.',
       github: 'https://github.com/Dev-fluxforge/barhf-website.git',
       status: 'In Progress'
     },
@@ -93,7 +93,7 @@ export class ProjectService {
       title: 'DERVAC SIWES Projects Dashboard',
       category: 'Training',
       tech: ['HTML5', 'CSS3', 'JS', 'TypeScript', 'Angular', 'Tailwind', 'Vercel'],
-      description: 'Web projects from 6-month SIWES industrial training at Dervac HUB, Palmgroove, Lagos.',
+      description: 'Organizing and presenting a large volume of disparate web projects accumulated during a 6-month intensive training program. I designed a centralized dashboard using Angular that allows for easy navigation and live demonstration of individual project modules. It serves as a comprehensive record of technical growth bridging training and real-world application.',
       github: 'https://github.com/Dev-fluxforge/dervacspace.git',
       demo: 'https://dervacspace.vercel.app/'
     },
@@ -102,7 +102,7 @@ export class ProjectService {
       title: 'Islamic Heritage Interactive Timeline',
       category: 'Personal',
       tech: ['Angular', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Git', 'HTML'],
-      description: 'Educational experience exploring Islamic scholarship and classical Arabic literary heritage.',
+      description: 'The challenge was transforming complex historical and literary data into an engaging and accessible educational experience. I developed an interactive timeline using Angular and Tailwind, focusing on clear typography and historical accuracy for scholarly content. This provided a unique digital exploration of Islamic scholarship for modern learners.',
       github: 'https://github.com/TunarshBee/DawahPivot.git',
       demo: 'https://dawah-pivot.vercel.app'
     }

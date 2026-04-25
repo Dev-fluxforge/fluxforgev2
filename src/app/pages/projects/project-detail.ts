@@ -45,56 +45,46 @@ import {ProjectService, Project} from '../../services/project';
                 allowfullscreen
               ></iframe>
             } @else if (project()?.screenshots?.length) {
-              <!-- Carousel -->
-              <div class="relative w-full h-full">
-                <!-- Slides -->
-                <div class="relative w-full h-full overflow-hidden">
-                  @for (shot of project()?.screenshots; track shot; let i = $index) {
-                    <img 
-                      [src]="shot" 
-                      [alt]="project()?.title"
-                      class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out"
-                      [class.opacity-100]="i === currentShotIndex()"
-                      [class.opacity-0]="i !== currentShotIndex()"
-                      [class.scale-105]="i === currentShotIndex()"
-                      [class.scale-110]="i !== currentShotIndex()"
-                      referrerpolicy="no-referrer"
-                    >
-                  }
-                </div>
-
-                <!-- Navigation Arrows -->
-                @if (project()!.screenshots!.length > 1) {
-                  <button 
-                    (click)="prevShot()"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-void/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-primary hover:text-void transition-all duration-300 z-10"
-                    aria-label="Previous screenshot"
-                  >
-                    <mat-icon>chevron_left</mat-icon>
-                  </button>
-                  <button 
-                    (click)="nextShot()"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-void/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-primary hover:text-void transition-all duration-300 z-10"
-                    aria-label="Next screenshot"
-                  >
-                    <mat-icon>chevron_right</mat-icon>
-                  </button>
-
-                  <!-- Indicators -->
-                  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    @for (shot of project()?.screenshots; track shot; let i = $index) {
-                      <button 
-                        (click)="setShot(i)"
-                        class="w-2 h-2 rounded-full transition-all duration-300"
-                        [class.bg-primary]="i === currentShotIndex()"
-                        [class.w-6]="i === currentShotIndex()"
-                        [class.bg-white/30]="i !== currentShotIndex()"
-                        [aria-label]="'Go to screenshot ' + (i + 1)"
-                      ></button>
-                    }
+              <!-- Carousel Track -->
+              <div class="absolute inset-0 flex transition-transform duration-700 ease-in-out" 
+                   [style.transform]="'translateX(-' + activeImageIndex() * 100 + '%)'">
+                @for (shot of project()?.screenshots; track shot) {
+                  <div class="min-w-full h-full relative">
+                    <img [src]="shot" 
+                         class="w-full h-full object-cover" 
+                         [alt]="project()?.title" 
+                         referrerpolicy="no-referrer">
+                    <!-- Subtle overlay for better text/control contrast -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-void/40 to-transparent pointer-events-none"></div>
                   </div>
                 }
               </div>
+
+              <!-- Navigation Arrows -->
+              @if (project()!.screenshots!.length > 1) {
+                <button (click)="prevImage()" 
+                        aria-label="Previous screenshot"
+                        class="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-void/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-primary hover:text-void z-10 transform hover:scale-110 active:scale-95">
+                  <mat-icon ripple>chevron_left</mat-icon>
+                </button>
+                <button (click)="nextImage()" 
+                        aria-label="Next screenshot"
+                        class="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-void/50 backdrop-blur-md border border-white/10 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-primary hover:text-void z-10 transform hover:scale-110 active:scale-95">
+                  <mat-icon ripple>chevron_right</mat-icon>
+                </button>
+
+                <!-- Indicators -->
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10 px-3 py-2 rounded-full bg-void/30 backdrop-blur-sm border border-white/5">
+                  @for (shot of project()?.screenshots; track shot; let i = $index) {
+                    <button (click)="setIndex(i)" 
+                            [attr.aria-label]="'Go to screenshot ' + (i + 1)"
+                            class="w-2 h-2 rounded-full transition-all duration-300"
+                            [class.bg-primary]="activeImageIndex() === i"
+                            [class.w-8]="activeImageIndex() === i"
+                            [class.bg-white/30]="activeImageIndex() !== i"></button>
+                  }
+                </div>
+              }
             } @else {
               <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-surface to-void">
                 <mat-icon class="!w-24 !h-24 !text-[96px] text-border-forest/30">dvr</mat-icon>
@@ -136,31 +126,6 @@ import {ProjectService, Project} from '../../services/project';
                       </li>
                     }
                   </ul>
-                </section>
-              }
-
-              @if (project()?.screenshots && project()!.screenshots!.length > 1) {
-                <section class="space-y-6">
-                  <h2 class="text-2xl font-display font-bold text-white flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                      <mat-icon>auto_awesome_motion</mat-icon>
-                    </div>
-                    Visual Journey
-                  </h2>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    @for (shot of project()?.screenshots; track shot; let i = $index) {
-                      <button 
-                        (click)="setShot(i)"
-                        class="aspect-video rounded-xl overflow-hidden border transition-all duration-300 bg-surface group/thumb"
-                        [class.border-primary]="i === currentShotIndex()"
-                        [class.border-border-forest]="i !== currentShotIndex()"
-                        [class.ring-4]="i === currentShotIndex()"
-                        [class.ring-primary/20]="i === currentShotIndex()"
-                      >
-                        <img [src]="shot" class="w-full h-full object-cover transition-transform group-hover/thumb:scale-110" [alt]="project()?.title" referrerpolicy="no-referrer">
-                      </button>
-                    }
-                  </div>
                 </section>
               }
             </div>
@@ -261,23 +226,7 @@ export class ProjectDetail implements OnInit {
   private projectService = inject(ProjectService);
   
   project = signal<Project | undefined>(undefined);
-  currentShotIndex = signal(0);
-
-  nextShot() {
-    if (!this.project()?.screenshots) return;
-    const nextIndex = (this.currentShotIndex() + 1) % this.project()!.screenshots!.length;
-    this.currentShotIndex.set(nextIndex);
-  }
-
-  prevShot() {
-    if (!this.project()?.screenshots) return;
-    const prevIndex = (this.currentShotIndex() - 1 + this.project()!.screenshots!.length) % this.project()!.screenshots!.length;
-    this.currentShotIndex.set(prevIndex);
-  }
-
-  setShot(index: number) {
-    this.currentShotIndex.set(index);
-  }
+  activeImageIndex = signal(0);
 
   getTechIcon(tech: string): string {
     const map: Record<string, string> = {
@@ -298,6 +247,24 @@ export class ProjectDetail implements OnInit {
     const key = tech;
     const path = map[key] || `${key.toLowerCase()}/${key.toLowerCase()}-original.svg`;
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
+  }
+
+  nextImage() {
+    const images = this.project()?.screenshots || [];
+    if (images.length > 0) {
+      this.activeImageIndex.update(i => (i + 1) % images.length);
+    }
+  }
+
+  prevImage() {
+    const images = this.project()?.screenshots || [];
+    if (images.length > 0) {
+      this.activeImageIndex.update(i => (i - 1 + images.length) % images.length);
+    }
+  }
+
+  setIndex(i: number) {
+    this.activeImageIndex.set(i);
   }
 
   ngOnInit() {

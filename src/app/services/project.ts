@@ -50,6 +50,7 @@ export class ProjectService {
       fullDescription: 'For this MVP, we focused on "The Art of Presentation". High-end photography requires high-resolution assets, which typically slow down websites. We engineered a proprietary lazy-loading sequence that prioritizes visual impact without sacrificing speed. The UI is minimal and editorial, allowing the photography to be the primary focus. We also integrated a smooth parallax scroll system that gives depth to the static image galleries.',
       github: 'https://github.com/Dev-fluxforge/waheeda.git',
       demo: 'https://classybeauty.vercel.app/',
+      status: 'Completed',
       features: [
         'High-resolution asset optimization',
         'Editorial-inspired layout and typography',
@@ -71,6 +72,7 @@ export class ProjectService {
       fullDescription: 'The Metallic project was about digital transformation for a heavy industry client. We took a traditional business model and gave it a modern, efficient digital presence. The core feature is a dynamic product catalog that allows users to find technical specifications quickly. We used Angular signals for state management, ensuring that the UI remains reactive and fast even when browsing thousands of product variations.',
       github: 'https://github.com/Dev-fluxforge/metallicv2.git',
       demo: 'https://metallicv2.vercel.app',
+      status: 'Completed',
       features: [
         'Advanced product catalog with dynamic filtering',
         'Technical data visualization modules',

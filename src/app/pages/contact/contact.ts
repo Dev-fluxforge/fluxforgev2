@@ -30,8 +30,8 @@ import {SectionHeader} from '../../components/section-header';
             <div class="grid grid-cols-1 gap-6">
               @for (item of contactInfo; track item.label) {
                 <a 
-                  [href]="item.link" 
-                  [target]="item.ext ? '_blank' : '_self'"
+                  [href]="item.label === 'Phone' ? getWhatsAppLink() : item.link" 
+                  [target]="item.ext || item.label === 'Phone' ? '_blank' : '_self'"
                   class="flex items-center gap-6 p-6 bg-surface border border-border-forest rounded-2xl group hover:border-primary transition-all duration-300"
                 >
                   <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-void transition-all">
@@ -197,7 +197,7 @@ export class Contact {
 
   contactInfo = [
     { label: 'Email', value: 'badmusa891@gmail.com', icon: 'email', link: 'mailto:badmusa891@gmail.com', ext: false },
-    { label: 'Phone', value: '+234 813 749 6961', icon: 'call', link: 'tel:+2348137496961', ext: false },
+    { label: 'Phone', value: '+234 813 749 6961', icon: 'chat', link: 'https://wa.me/qr/CI55FGSBOGYIO1', ext: true },
     { label: 'LinkedIn', value: 'Adeniyi Badmus', icon: 'person_outline', link: 'https://linkedin.com/in/muhammad-adeniyi-badmus-125692288', ext: true },
     { label: 'Location', value: 'Saki, Oyo, Nigeria · WAT', icon: 'location_on', link: '#', ext: false }
   ];
@@ -209,6 +209,15 @@ export class Contact {
       subject: [''],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
+  }
+
+  getWhatsAppLink() {
+    const name = this.contactForm.get('name')?.value || '';
+    const text = name 
+      ? `Hello, I am ${name}. I found your portfolio and would like to connect with you.` 
+      : "Hello, I found your portfolio and would like to connect with you.";
+    // Using the direct number format to ensure the message works as requested
+    return `https://wa.me/2348137496961?text=${encodeURIComponent(text)}`;
   }
 
   onSubmit() {

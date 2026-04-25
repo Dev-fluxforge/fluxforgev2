@@ -297,12 +297,12 @@ export class Home implements OnDestroy {
 
   testimonials = [
     {
-      name: 'Adewale Alaran',
+      name: 'Surv. Alaran Habeeb',
       role: 'CEO, Alaran Geo-Services',
       text: 'The web platform FluxForge built for our geological services has transformed how we present our technical data to clients. The precision and performance are unmatched.'
     },
     {
-      name: 'Boluwatife Williams',
+      name: 'ATIKU WAHEEDAH',
       role: 'Creative Director, Luxury Photography',
       text: 'Our Photography & Videography MVP needed to be visually stunning without sacrificing speed. FluxForge delivered a breathtaking experience that our clients love.'
     },

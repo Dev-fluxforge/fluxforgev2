@@ -62,10 +62,21 @@ import {SectionHeader} from '../../components/section-header';
                       type="text" 
                       formControlName="name"
                       placeholder="John Doe"
-                      class="w-full bg-void border border-border-forest rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
+                      class="w-full bg-void border rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:ring-4 transition-all"
+                      [class.border-border-forest]="!contactForm.get('name')?.touched || contactForm.get('name')?.valid"
+                      [class.border-red-500]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+                      [class.focus:border-primary]="!contactForm.get('name')?.touched || contactForm.get('name')?.valid"
+                      [class.focus:ring-primary/10]="!contactForm.get('name')?.touched || contactForm.get('name')?.valid"
+                      [class.focus:border-red-500]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+                      [class.focus:ring-red-500/10]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
                     >
                     @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
-                      <span class="text-[10px] text-red-400 ml-2">Name is required</span>
+                      <div class="flex items-center gap-1 text-[10px] text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">
+                        <mat-icon class="!w-3 !h-3 !text-[12px] h-[12px]">error_outline</mat-icon>
+                        @if (contactForm.get('name')?.errors?.['required']) {
+                          <span>Please enter your full name</span>
+                        }
+                      </div>
                     }
                   </div>
                   <div class="space-y-2">
@@ -75,10 +86,23 @@ import {SectionHeader} from '../../components/section-header';
                       type="email" 
                       formControlName="email"
                       placeholder="john@example.com"
-                      class="w-full bg-void border border-border-forest rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all"
+                      class="w-full bg-void border rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:ring-4 transition-all"
+                      [class.border-border-forest]="!contactForm.get('email')?.touched || contactForm.get('email')?.valid"
+                      [class.border-red-500]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+                      [class.focus:border-primary]="!contactForm.get('email')?.touched || contactForm.get('email')?.valid"
+                      [class.focus:ring-primary/10]="!contactForm.get('email')?.touched || contactForm.get('email')?.valid"
+                      [class.focus:border-red-500]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+                      [class.focus:ring-red-500/10]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
                     >
                     @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
-                      <span class="text-[10px] text-red-400 ml-2">Valid email is required</span>
+                      <div class="flex items-center gap-1 text-[10px] text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">
+                        <mat-icon class="!w-3 !h-3 !text-[12px] h-[12px]">error_outline</mat-icon>
+                        @if (contactForm.get('email')?.errors?.['required']) {
+                          <span>Email address is required</span>
+                        } @else if (contactForm.get('email')?.errors?.['email']) {
+                          <span>Please enter a valid email address</span>
+                        }
+                      </div>
                     }
                   </div>
                 </div>
@@ -101,8 +125,24 @@ import {SectionHeader} from '../../components/section-header';
                     rows="5"
                     formControlName="message"
                     placeholder="Tell us about your project..."
-                    class="w-full bg-void border border-border-forest rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all resize-none"
+                    class="w-full bg-void border rounded-xl p-4 text-pale-mint placeholder:text-sage focus:outline-none focus:ring-4 transition-all resize-none"
+                    [class.border-border-forest]="!contactForm.get('message')?.touched || contactForm.get('message')?.valid"
+                    [class.border-red-500]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
+                    [class.focus:border-primary]="!contactForm.get('message')?.touched || contactForm.get('message')?.valid"
+                    [class.focus:ring-primary/10]="!contactForm.get('message')?.touched || contactForm.get('message')?.valid"
+                    [class.focus:border-red-500]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
+                    [class.focus:ring-red-500/10]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"
                   ></textarea>
+                  @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
+                    <div class="flex items-center gap-1 text-[10px] text-red-400 ml-2 animate-in fade-in slide-in-from-top-1">
+                      <mat-icon class="!w-3 !h-3 !text-[12px] h-[12px]">error_outline</mat-icon>
+                      @if (contactForm.get('message')?.errors?.['required']) {
+                        <span>Your message is required</span>
+                      } @else if (contactForm.get('message')?.errors?.['minlength']) {
+                        <span>Message must be at least 10 characters long</span>
+                      }
+                    </div>
+                  }
                 </div>
 
                 <button 

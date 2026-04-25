@@ -11,20 +11,30 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
            [style.left.px]="x()" 
            [style.top.px]="y()">
         
-        <!-- Outer Ring -->
-        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-primary/50 transition-transform duration-300 ease-out scale-100 group-hover:scale-150 animate-pulse shadow-[0_0_15px_rgba(0,168,107,0.3)]"></div>
+        <!-- Rotating Outer Ring -->
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-primary/30 border-dashed animate-[spin_4s_linear_infinite]"></div>
+        
+        <!-- Main Pulsing Ring -->
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-primary/50 transition-transform duration-300 ease-out scale-100 shadow-[0_0_15px_rgba(0,168,107,0.3)] animate-pulse"></div>
+        
+        <!-- Rotating Inner Ring -->
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-t border-b border-primary/40 animate-[spin_2s_linear_infinite_reverse]"></div>
         
         <!-- Inner Dot -->
         <div class="absolute -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-ping"></div>
         
         <!-- Glow Effect -->
-        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-primary/5 blur-2xl animate-pulse"></div>
+        <div class="absolute -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-primary/10 blur-2xl animate-pulse"></div>
       </div>
     }
   `,
   styles: [`
     :host {
       display: contents;
+    }
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
   `]
 })

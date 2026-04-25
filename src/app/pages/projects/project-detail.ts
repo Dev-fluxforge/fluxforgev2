@@ -15,7 +15,7 @@ import {ProjectService, Project} from '../../services/project';
         <div class="flex flex-col gap-12">
           <!-- Back Button -->
           <a routerLink="/projects" class="flex items-center gap-2 text-sage hover:text-primary transition-colors group w-fit">
-            <mat-icon class="transition-transform group-hover:-translate-x-1 font-icon-weight-bold">arrow_back</mat-icon>
+            <mat-icon class="transition-transform group-hover:-translate-x-1">arrow_back</mat-icon>
             <span class="font-mono text-xs uppercase tracking-widest">Back to Projects</span>
           </a>
 
@@ -34,63 +34,28 @@ import {ProjectService, Project} from '../../services/project';
             </p>
           </div>
 
-          <!-- Main Gallery / Video Section -->
-          <div class="space-y-8">
-            <div class="relative group">
-              <!-- Main Feature Area -->
-              <div class="relative aspect-video rounded-3xl overflow-hidden border border-border-forest bg-surface/50 shadow-2xl">
-                @if (project()?.videoUrl && !showScreenshots()) {
-                  <iframe 
-                    [src]="project()?.videoUrl" 
-                    class="w-full h-full" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                  ></iframe>
-                } @else if (project()?.screenshots?.length) {
-                  <img 
-                    [src]="project()?.screenshots?.[activeImage()]" 
-                    [alt]="project()?.title"
-                    class="w-full h-full object-cover transition-all duration-700"
-                    referrerpolicy="no-referrer"
-                  >
-                  
-                  <!-- Gallery Navigation Overlay -->
-                  @if (project()!.screenshots!.length > 1) {
-                    <div class="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                      <button (click)="prevImage()" class="pointer-events-auto w-12 h-12 rounded-full bg-void/80 text-white backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-void transition-all -translate-x-4 group-hover:translate-x-0">
-                        <mat-icon>chevron_left</mat-icon>
-                      </button>
-                      <button (click)="nextImage()" class="pointer-events-auto w-12 h-12 rounded-full bg-void/80 text-white backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-void transition-all translate-x-4 group-hover:translate-x-0">
-                        <mat-icon>chevron_right</mat-icon>
-                      </button>
-                    </div>
-                  }
-                } @else {
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-surface to-void">
-                    <mat-icon class="!w-24 !h-24 !text-[96px] text-border-forest/30">dvr</mat-icon>
-                  </div>
-                }
+          <!-- Main Image / Video -->
+          <div class="relative aspect-video rounded-3xl overflow-hidden border border-border-forest bg-surface/50 group">
+            @if (project()?.videoUrl) {
+              <iframe 
+                [src]="project()?.videoUrl" 
+                class="w-full h-full" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+              ></iframe>
+            } @else if (project()?.screenshots?.length) {
+              <img 
+                [src]="project()?.screenshots?.[0]" 
+                [alt]="project()?.title"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                referrerpolicy="no-referrer"
+              >
+            } @else {
+              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-surface to-void">
+                <mat-icon class="!w-24 !h-24 !text-[96px] text-border-forest/30">dvr</mat-icon>
               </div>
-
-              <!-- Thumbnails / Gallery Navigation -->
-              @if (project()?.screenshots && project()!.screenshots!.length > 1) {
-                <div class="flex flex-wrap items-center gap-4 mt-6">
-                  @for (shot of project()?.screenshots; track shot; let i = $index) {
-                    <button 
-                      (click)="activeImage.set(i)"
-                      class="relative w-24 aspect-video rounded-xl overflow-hidden border-2 transition-all duration-300"
-                      [class.border-primary]="activeImage() === i"
-                      [class.border-border-forest]="activeImage() !== i"
-                      [class.scale-110]="activeImage() === i"
-                      [class.opacity-50]="activeImage() !== i"
-                    >
-                      <img [src]="shot" [alt]="project()?.title + ' screenshot ' + (i + 1)" class="w-full h-full object-cover" referrerpolicy="no-referrer">
-                    </button>
-                  }
-                </div>
-              }
-            </div>
+            }
           </div>
 
           <!-- Content Grid -->
@@ -99,7 +64,7 @@ import {ProjectService, Project} from '../../services/project';
             <div class="lg:col-span-2 space-y-12">
               <section class="space-y-6">
                 <h2 class="text-2xl font-display font-bold text-white flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,168,107,0.1)]">
+                  <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                     <mat-icon>description</mat-icon>
                   </div>
                   Project Overview
@@ -114,16 +79,34 @@ import {ProjectService, Project} from '../../services/project';
               @if (project()?.features?.length) {
                 <section class="space-y-6">
                   <h2 class="text-2xl font-display font-bold text-white flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent shadow-[0_0_20px_rgba(244,196,48,0.1)]">
+                    <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
                       <mat-icon>task_alt</mat-icon>
                     </div>
                     Key Features
                   </h2>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @for (feature of project()?.features; track feature) {
-                      <div class="flex items-start gap-3 p-5 bg-surface/30 border border-border-forest/50 rounded-2xl hover:border-primary/30 transition-colors group">
-                        <mat-icon class="text-primary mt-0.5 group-hover:scale-110 transition-transform">check_circle</mat-icon>
-                        <span class="text-sage text-sm leading-relaxed">{{ feature }}</span>
+                      <li class="flex items-start gap-3 p-4 bg-surface/50 border border-border-forest rounded-xl">
+                        <mat-icon class="text-primary mt-0.5">check_circle</mat-icon>
+                        <span class="text-sage text-sm">{{ feature }}</span>
+                      </li>
+                    }
+                  </ul>
+                </section>
+              }
+
+              @if (project()?.screenshots && project()!.screenshots!.length > 1) {
+                <section class="space-y-6">
+                  <h2 class="text-2xl font-display font-bold text-white flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                      <mat-icon>auto_awesome_motion</mat-icon>
+                    </div>
+                    Visual Journey
+                  </h2>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    @for (shot of project()?.screenshots?.slice(1); track shot) {
+                      <div class="aspect-video rounded-2xl overflow-hidden border border-border-forest bg-surface group hover:border-primary transition-all duration-300">
+                        <img [src]="shot" class="w-full h-full object-cover transition-transform group-hover:scale-110" [alt]="project()?.title" referrerpolicy="no-referrer">
                       </div>
                     }
                   </div>
@@ -135,21 +118,16 @@ import {ProjectService, Project} from '../../services/project';
             <div class="space-y-8">
               <!-- Project Status -->
               @if (project()?.status) {
-                <div class="p-8 bg-surface border border-border-forest rounded-3xl space-y-6 shadow-xl">
-                  <h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white flex items-center gap-2 opacity-50">
+                <div class="p-8 bg-surface border border-border-forest rounded-3xl space-y-6">
+                  <h3 class="text-sm font-mono uppercase tracking-[0.2em] text-white flex items-center gap-2">
                     <mat-icon class="!text-sm">info</mat-icon>
-                    Delivery Status
+                    Status
                   </h3>
-                  <div class="flex items-center gap-4 p-5 rounded-2xl bg-void/50 border border-border-forest">
-                    <div class="relative flex">
-                      <div class="w-3 h-3 rounded-full animate-ping absolute opacity-75" 
-                           [class.bg-accent]="project()?.status === 'In Progress'"
-                           [class.bg-primary]="project()?.status === 'Completed' || !project()?.status?.includes('Progress')"></div>
-                      <div class="w-3 h-3 rounded-full" 
-                           [class.bg-accent]="project()?.status === 'In Progress'"
-                           [class.bg-primary]="project()?.status === 'Completed' || !project()?.status?.includes('Progress')"></div>
-                    </div>
-                    <span class="text-sm font-bold tracking-wide uppercase font-mono"
+                  <div class="flex items-center gap-3 p-4 rounded-2xl bg-void/50 border border-border-forest">
+                    <div class="w-3 h-3 rounded-full animate-pulse" 
+                         [class.bg-accent]="project()?.status === 'In Progress'"
+                         [class.bg-primary]="project()?.status === 'Completed' || !project()?.status?.includes('Progress')"></div>
+                    <span class="text-sm font-bold tracking-wide"
                           [class.text-accent]="project()?.status === 'In Progress'"
                           [class.text-primary]="project()?.status === 'Completed' || !project()?.status?.includes('Progress')">
                       {{ project()?.status }}
@@ -159,28 +137,22 @@ import {ProjectService, Project} from '../../services/project';
               }
 
               <!-- Tech Stack -->
-              <div class="p-8 bg-surface border border-border-forest rounded-3xl space-y-6 shadow-xl">
-                <h3 class="text-xs font-mono uppercase tracking-[0.2em] text-white flex items-center gap-2 opacity-50">
+              <div class="p-8 bg-surface border border-border-forest rounded-3xl space-y-6">
+                <h3 class="text-sm font-mono uppercase tracking-[0.2em] text-white flex items-center gap-2">
                   <mat-icon class="!text-sm">code</mat-icon>
-                  Engineered With
+                  Technologies
                 </h3>
-                <div class="grid grid-cols-3 gap-3">
+                <div class="grid grid-cols-4 gap-3">
                   @for (t of project()?.tech; track t) {
-                    <div class="group relative flex flex-col items-center justify-center p-4 rounded-2xl bg-void/50 border border-border-forest hover:border-primary transition-all duration-300"
-                         [attr.aria-label]="t">
-                      <!-- Tooltip -->
-                      <div class="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-primary text-void text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all pointer-events-none whitespace-nowrap z-10 shadow-lg translate-y-2 group-hover:translate-y-0">
-                        {{ t }}
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-primary"></div>
-                      </div>
-                      
-                      <div class="w-10 h-10 flex items-center justify-center relative">
+                    <div class="group relative flex flex-col items-center gap-2 p-3 rounded-xl bg-void/50 border border-border-forest hover:border-primary transition-all cursor-help"
+                         [title]="t">
+                      <div class="w-8 h-8 flex items-center justify-center">
                         <img [src]="getTechIcon(t)" 
-                             class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                             class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all" 
                              [alt]="t"
                              (error)="$any($event.target).style.display = 'none'">
                         <!-- Fallback for icons not found -->
-                        <span class="absolute inset-0 flex items-center justify-center text-[10px] font-mono font-bold text-sage group-hover:text-primary transition-colors tech-fallback">
+                        <span class="text-[10px] font-mono font-bold text-sage group-hover:text-primary transition-colors tech-fallback">
                           {{ t.slice(0, 2).toUpperCase() }}
                         </span>
                       </div>
@@ -238,8 +210,6 @@ export class ProjectDetail implements OnInit {
   private projectService = inject(ProjectService);
   
   project = signal<Project | undefined>(undefined);
-  activeImage = signal<number>(0);
-  showScreenshots = signal<boolean>(true);
 
   getTechIcon(tech: string): string {
     const map: Record<string, string> = {
@@ -255,26 +225,11 @@ export class ProjectDetail implements OnInit {
       'Git': 'git/git-original.svg',
       'Node.js': 'nodejs/nodejs-original.svg',
       'Firebase': 'firebase/firebase-plain.svg',
-      'Vercel': 'vercel/vercel-original.svg',
-      'Vite': 'vite/vite-original.svg'
+      'Vercel': 'vercel/vercel-original.svg'
     };
     const key = tech;
     const path = map[key] || `${key.toLowerCase()}/${key.toLowerCase()}-original.svg`;
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
-  }
-
-  nextImage() {
-    const len = this.project()?.screenshots?.length || 0;
-    if (len > 0) {
-      this.activeImage.update(i => (i + 1) % len);
-    }
-  }
-
-  prevImage() {
-    const len = this.project()?.screenshots?.length || 0;
-    if (len > 0) {
-      this.activeImage.update(i => (i - 1 + len) % len);
-    }
   }
 
   ngOnInit() {

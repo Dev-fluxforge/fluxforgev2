@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, OnInit, DestroyRef, PLATFORM
 import {RouterOutlet, Router, NavigationEnd} from '@angular/router';
 import {Navbar} from './layout/navbar';
 import {Footer} from './layout/footer';
+import {CursorFollower} from './layout/cursor-follower';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {filter} from 'rxjs/operators';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -9,7 +10,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, CommonModule],
+  imports: [RouterOutlet, Navbar, Footer, CursorFollower, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

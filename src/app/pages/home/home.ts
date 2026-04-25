@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, signal, OnDestroy, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, OnDestroy, inject, HostListener} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,12 +17,16 @@ import {ProjectCard} from '../../components/project-card';
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <!-- Main Grid -->
-          <div class="absolute inset-0 opacity-[0.03]" 
+          <div class="absolute inset-0 opacity-[0.03] will-change-transform transition-transform duration-300 ease-out" 
+               [style.transform]="'translateY(' + scrollY() * 0.1 + 'px)'"
                style="background-image: linear-gradient(#00A86B 1px, transparent 1px), linear-gradient(90deg, #00A86B 1px, transparent 1px); background-size: 60px 60px;">
           </div>
           <!-- Spotlight Orbs -->
-          <div class="absolute -top-[10%] left-[10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full animate-pulse"></div>
-          <div class="absolute top-[20%] right-[10%] w-[30%] h-[40%] bg-accent/5 blur-[100px] rounded-full animate-pulse" style="animation-delay: 2s"></div>
+          <div class="absolute -top-[10%] left-[10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full animate-pulse will-change-transform transition-transform duration-500 ease-out"
+               [style.transform]="'translateY(' + scrollY() * -0.05 + 'px)'"></div>
+          <div class="absolute top-[20%] right-[10%] w-[30%] h-[40%] bg-accent/5 blur-[100px] rounded-full animate-pulse will-change-transform transition-transform duration-500 ease-out" 
+               [style.transform]="'translateY(' + scrollY() * -0.08 + 'px)'"
+               style="animation-delay: 2s"></div>
         </div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
@@ -38,7 +42,7 @@ import {ProjectCard} from '../../components/project-card';
                 Forging<br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient">Digital</span><br/>
                 <span class="relative inline-flex items-center min-h-[3em] sm:min-h-[1.2em] overflow-hidden w-full">
-                  <span class="relative text-white animate-text-slide whitespace-normal block w-full">
+                  <span class="relative text-white animate-text-slide will-change-transform whitespace-normal block w-full">
                     {{ rotatingText() }}
                   </span>
                 </span>
@@ -270,6 +274,20 @@ import {ProjectCard} from '../../components/project-card';
 export class Home implements OnDestroy {
   private projectService = inject(ProjectService);
   rotatingText = signal('interfaces that matter.');
+  scrollY = signal(0);
+  private scrollTicking = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (!this.scrollTicking) {
+      window.requestAnimationFrame(() => {
+        this.scrollY.set(window.scrollY);
+        this.scrollTicking = false;
+      });
+      this.scrollTicking = true;
+    }
+  }
+
   private phrases = [
     'interfaces that matter.',
     'products that ship.',

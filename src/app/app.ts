@@ -6,6 +6,7 @@ import {CursorFollower} from './layout/cursor-follower';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {filter} from 'rxjs/operators';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {SeoService} from './services/seo.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,8 +19,11 @@ export class App implements OnInit {
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
   private platformId = inject(PLATFORM_ID);
+  private seoService = inject(SeoService);
 
   ngOnInit() {
+    this.seoService.init();
+
     if (isPlatformBrowser(this.platformId)) {
       this.router.events.pipe(
         filter(event => event instanceof NavigationEnd),

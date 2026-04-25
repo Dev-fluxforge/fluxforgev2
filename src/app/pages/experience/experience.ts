@@ -157,13 +157,13 @@ export class Experience {
       date: 'Jan 2025 – Feb 2025',
       title: 'Internship Certificate',
       org: 'CodSoft Internship Program',
-      cert: '#'
+      cert: 'https://drive.google.com/file/d/1peMUDZLRw56GzLuoWHwGyd7iaNr0tuMX/view?usp=sharing'
     },
     {
       date: 'May 2023 – Jul 2023',
       title: 'HTML Course Certificate',
       org: 'CODELIBER Academy',
-      cert: '#'
+      cert: 'https://drive.google.com/file/d/1e9Y_EUbT3CeVFoDGWuRRzBfCJWx7Vezp/view?usp=sharing'
     }
   ];
 

@@ -89,14 +89,14 @@ import {MatIconModule} from '@angular/material/icon';
               <div class="space-y-8">
                 <div>
                   <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-slate-900">Software Engineering Intern</h3>
-                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-1 rounded text-slate-500 uppercase">Jan 2025 - Feb 2025</span>
+                    <h3 class="font-bold text-slate-900">Lead Developer & Founder</h3>
+                    <span class="text-[10px] font-bold bg-indigo-50 px-2 py-1 rounded text-indigo-600 uppercase tracking-wider">2024 - Present</span>
                   </div>
-                  <p class="text-xs text-indigo-600 font-bold mb-3">CodSoft | Remote, India</p>
+                  <p class="text-xs text-indigo-600 font-bold mb-3">FluxForge | Saki, Nigeria</p>
                   <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                    <li>Successfully completed 3 production-ready web projects within tight 2-month timeline.</li>
-                    <li>Engineered fully functional calculator application using vanilla JavaScript.</li>
-                    <li>Designed and developed responsive landing pages with cross-browser compatibility.</li>
+                    <li>Architecting high-performance zoneless Angular applications for startups and local businesses.</li>
+                    <li>Successfully delivered specialized MVPs including a high-end photography platform and a geological services website.</li>
+                    <li>Translating complex business requirements into scalable, design-centric front-end code with optimized SEO.</li>
                   </ul>
                 </div>
 
@@ -107,9 +107,35 @@ import {MatIconModule} from '@angular/material/icon';
                   </div>
                   <p class="text-xs text-indigo-600 font-bold mb-3">Dervac HUB | Lagos, Nigeria</p>
                   <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
-                    <li>Completed 6-month SIWES gaining practical exposure to digital innovation and technical support.</li>
-                    <li>Demonstrated dedication to assigned tasks and ability to work within professional team environments.</li>
-                    <li>Exposed to hands-on activities related to IT operations and digital services.</li>
+                    <li>Engineered a centralized training dashboard to showcase 10+ web modules using Angular and Tailwind CSS.</li>
+                    <li>Collaborated in a fast-paced development hub environment, gaining hands-on exposure to professional dev-ops.</li>
+                    <li>Demonstrated technical adaptability by mastering modern JS frameworks and state management patterns.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-bold text-slate-900">Software Engineering Intern</h3>
+                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-1 rounded text-slate-500 uppercase">Jan 2025 - Feb 2025</span>
+                  </div>
+                  <p class="text-xs text-indigo-600 font-bold mb-3">CodSoft | Remote, India</p>
+                  <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                    <li>Engineered production-ready web applications focusing on semantic HTML and responsive architecture.</li>
+                    <li>Developed a custom logic engine for a web-based calculator with robust error handling.</li>
+                    <li>Maintained 100% adherence to project milestones and technical specifications throughout the program.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-bold text-slate-900">Digital Strategy Volunteer</h3>
+                    <span class="text-[10px] font-bold bg-slate-100 px-2 py-1 rounded text-slate-500 uppercase">2023 - Present</span>
+                  </div>
+                  <p class="text-xs text-indigo-600 font-bold mb-3">BARHF Foundation | Oyo, Nigeria</p>
+                  <ul class="text-sm text-slate-600 space-y-2 list-disc pl-4">
+                    <li>Managing digital visibility and awareness campaigns reaching weekly audiences of 5,000+ active users.</li>
+                    <li>Developing and maintaining the foundation's digital repository for community outreach updates.</li>
+                    <li>Optimizing social media and web presence to drive youth engagement and awareness initiatives.</li>
                   </ul>
                 </div>
               </div>

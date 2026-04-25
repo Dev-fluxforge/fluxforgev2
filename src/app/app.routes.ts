@@ -38,6 +38,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'projects/:id',
+    loadComponent: () => import('./pages/projects/project-detail').then(m => m.ProjectDetail),
+    data: {
+      title: 'Project Detail',
+      description: 'Deep dive into FluxForge project results and technical architecture.',
+      keywords: 'Project Detail, Technical Architecture, Case Study'
+    }
+  },
+  {
     path: 'experience',
     loadComponent: () => import('./pages/experience/experience').then(m => m.Experience),
     data: {

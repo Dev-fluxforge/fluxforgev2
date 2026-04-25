@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
+import {RouterModule} from '@angular/router';
 import {Project} from '../services/project';
 
 @Component({
   selector: 'app-project-card',
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'flex flex-col h-full'
@@ -34,6 +35,13 @@ import {Project} from '../services/project';
             In Progress
           </span>
         }
+
+        <!-- Hover Overlay -->
+        <div class="absolute inset-0 bg-void/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <a [routerLink]="['/projects', project.id]" class="px-6 py-3 bg-primary text-void rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-accent transition-all transform translate-y-4 group-hover:translate-y-0 duration-500">
+            View Case Study
+          </a>
+        </div>
       </div>
 
       <!-- Content -->
@@ -83,30 +91,32 @@ import {Project} from '../services/project';
           <a 
             [href]="project.github" 
             target="_blank" 
-            class="flex-1 bg-primary hover:bg-accent text-void py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 group/btn"
+            class="flex-1 bg-void/50 hover:bg-void border border-border-forest hover:border-primary text-sage hover:text-primary py-2.5 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-2 group/btn"
           >
-            <div class="w-4 h-4 flex items-center justify-center">
+            <div class="w-3.5 h-3.5 flex items-center justify-center">
               <img 
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
-                class="w-full h-full brightness-0 group-hover/btn:scale-110 transition-transform"
+                class="w-full h-full brightness-0 invert opacity-60 group-hover/btn:opacity-100 transition-all"
                 alt="GitHub"
               >
             </div>
-            <span class="leading-none mt-[1px]">GitHub</span>
+            <span>GitHub</span>
           </a>
           @if (project.demo) {
             <a 
               [href]="project.demo" 
               target="_blank" 
-              class="flex-1 border border-border-forest hover:border-primary hover:text-primary text-sage py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center group/btn"
+              class="flex-1 border border-border-forest hover:border-primary hover:text-primary text-sage py-2.5 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center group/btn"
             >
-              <span class="leading-none">Live Demo</span>
+              <span>Live Demo</span>
             </a>
-          } @else {
-            <div class="flex-1 border border-border-forest/30 text-sage/30 py-2.5 rounded-lg text-xs font-bold flex items-center justify-center cursor-not-allowed">
-              <span class="leading-none">No Demo</span>
-            </div>
           }
+          <a 
+            [routerLink]="['/projects', project.id]"
+            class="flex-1 bg-primary/10 hover:bg-primary text-primary hover:text-void py-2.5 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center"
+          >
+            Details
+          </a>
         </div>
       </div>
     </div>

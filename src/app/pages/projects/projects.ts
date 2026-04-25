@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, signal, computed} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {SectionHeader} from '../../components/section-header';
@@ -50,9 +50,7 @@ import {ProjectService} from '../../services/project';
   `
 })
 export class Projects {
-  private projectService = new ProjectService(); // Injected via constructor normally but standalone signals context is fine here
-  // Actually, I should use inject() or constructor. 
-  // Let's use constructor.
+  private projectService = inject(ProjectService);
   
   categories = ['All', 'Company', 'Client', 'Business', 'Internship', 'Non-Profit', 'Training', 'Personal'];
   activeFilter = signal('All');
